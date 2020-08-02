@@ -1,6 +1,6 @@
-import React from "react";
-import SlickSlider from "react-slick";
-import styled from "styled-components";
+import React from 'react';
+import SlickSlider from 'react-slick';
+import styled from 'styled-components';
 
 const Container = styled.ul`
   padding: 0;

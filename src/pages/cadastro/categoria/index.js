@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
   const valoresIniciais = {
@@ -11,24 +12,12 @@ function CadastroCategoria() {
     cor: '#000',
   };
 
-  const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(valoresIniciais);
-  function setValue(key, value) {
-    setValues({
-      ...values,
-      [key]: value, // nome : 'valor'
-    });
-  }
+  const { handleChange, values, clearForm } = useForm(valoresIniciais);
 
-  function handleChange(info) {
-    // setValues(info.target.value);
-    // const { getAttribute, value } = info.target;
-    // setValue(getAttribute("name"), value);
-    setValue(info.target.getAttribute('name'), info.target.value);
-  }
+  const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
-    const URL = window.location.hostname.includes('localhost') ? 'https://localhost:8080/categorias' : 'https://jonsflix.herokuapp.com/categorias';
+    const URL = window.location.hostname.includes('localhost') ? 'http://localhost:8080/categorias' : 'https://jonsflix.herokuapp.com/categorias';
 
     fetch(URL).then(async (resposta) => {
       const response = await resposta.json();
@@ -49,7 +38,7 @@ function CadastroCategoria() {
         onSubmit={function handleSubmit(info) {
           info.preventDefault();
           setCategorias([...categorias, values]);
-          setValues(valoresIniciais);
+          clearForm(valoresIniciais);
         }}
       >
         <FormField
@@ -86,7 +75,7 @@ function CadastroCategoria() {
       )}
 
       <ul>
-        {categorias.map((categoria) => <li key={`${categoria.nome}`}>{categoria.nome}</li>)}
+        {categorias.map((categoria) => <li key={`${categoria.titulo}`}>{categoria.titulo}</li>)}
       </ul>
 
       <Link to="/">Ir para home</Link>
