@@ -16,15 +16,14 @@ function CadastroVideo() {
   const [categorias, setCategorias] = useState([]);
   const categoryTitles = categorias.map(({ titulo }) => titulo);
 
-
-  const { handleChange, setValue, values } = useForm({
+  const valoresIniciais = {
     id: 0,
     titulo: '',
     url: '',
     categoria: '',
-  });
+  };
 
-
+  const { handleChange, setValue, values, clearForm } = useForm(valoresIniciais);
 
   useEffect(() => {
     videosRepository
@@ -51,13 +50,17 @@ function CadastroVideo() {
     window.scrollTo(0, 0);
   }
 
+  const limpaCampos = ()=>{
+    clearForm();
+    window.scrollTo(0, 0);
+  }
   const onDelete = (vid) => {
     console.log(vid);
 
     videosRepository.deleteVideo({
       id: vid.id
     }).then(() => {
-      history.push('/');
+
     });
   }
 
@@ -80,7 +83,8 @@ function CadastroVideo() {
             url: values.url,
             categoriaId: categoriaEscolhida.id,
           }).then(() => {
-            history.push('/');
+            setVideos([...videos, values]);
+            limpaCampos();
           });
         } else {
           videosRepository.update({
@@ -89,10 +93,17 @@ function CadastroVideo() {
             categoriaId: categoriaEscolhida.id,
             id: values.id,
           }).then(() => {
-            history.push('/');
+            videos.find((video) => {
+              if (video.id === values.id) {
+                video.titulo = values.titulo;
+                video.url = values.url;
+                video.categoriaId = values.categoriaId;
+                setValue();
+                limpaCampos();
+              }
+            });
           });
         }
-
       }}
       >
 

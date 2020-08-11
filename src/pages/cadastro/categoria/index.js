@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link,useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import useForm from '../../../hooks/useForm';
 import FormField from '../../../components/FormField';
@@ -34,13 +34,18 @@ function CadastroCategoria() {
     window.scrollTo(0, 0);
   }
 
+  const limpaCampos = () => {
+    clearForm();
+    window.scrollTo(0, 0);
+  }
+
   const onDelete = (cat) => {
     console.log(cat);
 
     categoriasRepository.deletecategory({
       id: cat.id
     }).then(() => {
-      history.push('/');
+
     });
   }
 
@@ -85,6 +90,7 @@ function CadastroCategoria() {
             }).then(() => {
               //history.push('/cadastro/categoria');
               setCategorias([...categorias, values]);
+              limpaCampos();
             });
           } else {
             categoriasRepository.update({
@@ -100,13 +106,11 @@ function CadastroCategoria() {
                   categoria.descricao = values.descricao;
                   categoria.cor = values.cor;
                   setValue();
+                  limpaCampos();
                 }
               });
             });
           }
-
-          clearForm();
-          window.scrollTo(0, 0);
         }}
       >
         <FormField
