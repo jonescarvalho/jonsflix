@@ -1,53 +1,42 @@
 {
   "categorias": [
     {
-      "id": 1,
       "titulo": "Front End",
+      "descricao": "Videos de categoria FrontEnd",
       "cor": "#6BD1FF",
-      "link_extra": {
-        "text": "Formação de Front End na Alura",
-        "url": "https://www.alura.com.br/cursos-online-front-end"
-      }
+      "id": 1
     },
     {
-      "id": 2,
       "titulo": "Back End",
+      "descricao": "Videos relacionados ao server side, api, e dicas de boas praticas",
       "cor": "#00C86F",
-      "link_extra": {
-        "text": "Cursos de Back End na Alura",
-        "url": "https://www.alura.com.br/cursos-online-programacao"
-      }
+      "id": 2
     },
     {
-      "id": 3,
       "titulo": "Data Science e Inteligência Artificial",
+      "descricao": "Todo tópico relacionado a Ciência de dados",
       "cor": "#9cd33b",
-      "link_extra": {
-        "text": "Cursos de Data Science na Alura",
-        "url": "https://www.alura.com.br/cursos-online-mobile"
-      }
+      "id": 3
     },
     {
-      "id": 4,
       "titulo": "Filmes",
-      "cor": "orange"
+      "descricao": "Os melhores trailers",
+      "cor": "#c75a00",
+      "id": 4
     },
     {
-      "id": 5,
       "titulo": "Games",
-      "cor": "red",
-      "link_extra": {
-        "text": "Formação de Jogos na Alura",
-        "url": "https://www.alura.com.br/cursos-online-front-end"
-      }
+      "descricao": "Top games do brasil e do mundo só aqui",
+      "cor": "#a80000",
+      "id": 5
     }
   ],
   "videos": [
     {
-      "id": 1,
+      "titulo": "Depoimento do aluno Jones",
+      "url": "https://youtu.be/8zq8FOgtCsY",
       "categoriaId": 1,
-      "titulo": "SEO com React",
-      "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+      "id": 1
     },
     {
       "id": 2,
@@ -174,24 +163,6 @@
       "categoriaId": 5,
       "titulo": "Assassins Creed Valhalla",
       "url": "https://www.youtube.com/watch?v=KDfdjB9uL0U"
-    },
-    {
-      "id": 23,
-      "categoriaId": 5,
-      "titulo": "God of War 4",
-      "url": "https://www.youtube.com/watch?v=FyIwEFXOcaE"
-    },
-    {
-      "id": 24,
-      "categoriaId": 5,
-      "titulo": "Resident Evil 8",
-      "url": "https://www.youtube.com/watch?v=JSapXD9vxYA"
-    },
-    {
-      "titulo": "Video padrão",
-      "url": "https://www.youtube.com/watch?v=jOAU81jdi-c",
-      "categoriaId": 1,
-      "id": 25
     }
   ]
 }
